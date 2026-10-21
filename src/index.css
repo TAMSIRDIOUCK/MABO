@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --mab-yellow: #FFCC00;
+    --mab-yellow-dark: #F5B800;
+    --mab-black: #1A1A1A;
+    --mab-dark: #0F0F0F;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #f5f5f5;
+  }
+}
+
+@layer components {
+  .mab-btn-primary {
+    @apply bg-[#FFCC00] text-black font-semibold py-3.5 px-6 rounded-xl transition-all
+           hover:bg-[#F5B800] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed
+           shadow-sm hover:shadow-md;
+  }
+
+  .mab-btn-secondary {
+    @apply bg-white text-gray-800 font-semibold py-3.5 px-6 rounded-xl border border-gray-200
+           transition-all hover:bg-gray-50 active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .mab-input {
+    @apply w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-gray-900
+           placeholder:text-gray-400 transition-all focus:outline-none focus:border-[#FFCC00]
+           focus:ring-2 focus:ring-[#FFCC00]/30 text-[15px];
+  }
+
+  .mab-card {
+    @apply bg-white rounded-2xl border border-gray-100 shadow-sm;
+  }
+
+  .mab-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border;
+  }
+}
+
+@keyframes mab-pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.mab-pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: inherit;
+  animation: mab-pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes mab-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mab-animate-slide-up {
+  animation: mab-slide-up 0.4s ease-out forwards;
+}
+
+@keyframes mab-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.mab-animate-fade-in {
+  animation: mab-fade-in 0.3s ease-out forwards;
+}
+
+@keyframes mab-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.mab-animate-shake {
+  animation: mab-shake 0.4s ease-in-out;
+}

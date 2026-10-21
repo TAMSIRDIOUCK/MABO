@@ -1,0 +1,76 @@
+/* Thème MABO — rouge / blanc (inspiré Yango).
+   Remplacez vos anciennes règles .mab-* de index.css par ce fichier
+   (ou importez-le APRÈS index.css dans main.tsx). */
+
+:root {
+  --mab-red: #fc3f1d;
+  --mab-red-dark: #e03213;
+}
+
+.mab-card {
+  background: #fff;
+  border-radius: 1rem;
+  border: 1px solid #f1f1f1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.mab-input {
+  width: 100%;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.875rem;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  background: #fff;
+  color: #111;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.mab-input:focus {
+  border-color: var(--mab-red);
+  box-shadow: 0 0 0 3px rgba(252, 63, 29, 0.12);
+}
+
+.mab-btn-primary {
+  background: var(--mab-red);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.9rem 1.25rem;
+  border-radius: 0.875rem;
+  transition: background 0.15s, transform 0.1s;
+}
+.mab-btn-primary:hover { background: var(--mab-red-dark); }
+.mab-btn-primary:active { transform: scale(0.98); }
+.mab-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.mab-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@keyframes mab-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mab-slide-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes mab-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+.mab-animate-fade-in { animation: mab-fade-in 0.25s ease-out; }
+.mab-animate-slide-up { animation: mab-slide-up 0.3s ease-out; }
+.mab-animate-shake { animation: mab-shake 0.4s ease-in-out; }
+
+/* Barre de recherche "scan" du livreur */
+@keyframes mab-scan { 0% { left: -40%; } 100% { left: 100%; } }
+.mab-scan-bar { position: relative; overflow: hidden; height: 4px; border-radius: 999px; background: #fee2dc; }
+.mab-scan-bar::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 40%;
+  background: var(--mab-red); border-radius: 999px;
+  animation: mab-scan 1.4s ease-in-out infinite;
+}
+
+.leaflet-container { font-family: inherit; }
